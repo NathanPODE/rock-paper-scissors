@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        humanScore = 0;
+        computerScore = 0;
+        function getComputerChoice(){
+            let choice = Math.floor(Math.random() * 3);
+            
+            if(choice === 0){
+                return "rock";
+            } else if (choice === 1) {
+                return "paper";
+            } else {
+                return "scissors";
+            }
+        }
+
+        function getHumanChoice(){
+            let choice = prompt("Choose rock, paper, or scissors: ");
+            return choice;
+        }
+
+        function playRound(humanChoice, computerChoice){
+            let lowerHuman = humanChoice.toLowerCase();
+            let lowerComputer = computerChoice.toLowerCase();
+
+            if (lowerHuman === lowerComputer) {
+                console.log("It's a tie!");
+            } else if (lowerHuman === 'rock' && lowerComputer === 'scissors') {
+                humanScore++;
+                console.log("You win, rock beats scissors!");
+            } else if (lowerHuman === 'rock' && lowerComputer === 'paper') {
+                computerScore++;
+                console.log("You lose, paper beats rock!");
+            } else if (lowerHuman === 'paper' && lowerComputer === 'rock') {
+                humanScore++;
+                console.log("You win, paper beats rock!");
+            } else if (lowerHuman === 'paper' && lowerComputer === 'scissors') {
+                computerScore++;
+                console.log("You lose, scissors beat paper!");
+            } else if (lowerHuman === 'scissors' && lowerComputer === 'paper') {
+                humanScore++;
+                console.log("You win, scissors beat paper!");
+            } else if (lowerHuman === 'scissors' && lowerComputer === 'rock') {
+                computerScore++;
+                console.log("You lose, rock beats scissors!");
+            } else {
+                console.log("Invalid choice:", humanChoice);
+            }
+
+            console.log("Score - You:", humanScore, "Computer:", computerScore);
+        }
+
+        function playGame(){
+            for(let i = 0; i < 4; i++){
+                const humanSelection = getHumanChoice();
+                const computerSelection = getComputerChoice();
+
+                playRound(humanSelection, computerSelection);
+            }
+        }
+
+        playGame();
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
